@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/monitor-tuto/static/css/main.8c8b27cf.chunk.css",
-    "main.js": "/monitor-tuto/static/js/main.e6214809.chunk.js",
-    "main.js.map": "/monitor-tuto/static/js/main.e6214809.chunk.js.map",
+    "main.js": "/monitor-tuto/static/js/main.71dc6b34.chunk.js",
+    "main.js.map": "/monitor-tuto/static/js/main.71dc6b34.chunk.js.map",
     "runtime-main.js": "/monitor-tuto/static/js/runtime-main.bb8db9cf.js",
     "runtime-main.js.map": "/monitor-tuto/static/js/runtime-main.bb8db9cf.js.map",
     "static/js/2.d2a208a5.chunk.js": "/monitor-tuto/static/js/2.d2a208a5.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.bb8db9cf.js",
     "static/js/2.d2a208a5.chunk.js",
     "static/css/main.8c8b27cf.chunk.css",
-    "static/js/main.e6214809.chunk.js"
+    "static/js/main.71dc6b34.chunk.js"
   ]
 }
