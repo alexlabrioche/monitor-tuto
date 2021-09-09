@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/monitor-tuto/static/css/main.8c8b27cf.chunk.css",
+    "main.js": "/monitor-tuto/static/js/main.c0657252.chunk.js",
+    "main.js.map": "/monitor-tuto/static/js/main.c0657252.chunk.js.map",
+    "runtime-main.js": "/monitor-tuto/static/js/runtime-main.969b88d0.js",
+    "runtime-main.js.map": "/monitor-tuto/static/js/runtime-main.969b88d0.js.map",
+    "static/js/2.81c0a09f.chunk.js": "/monitor-tuto/static/js/2.81c0a09f.chunk.js",
+    "static/js/2.81c0a09f.chunk.js.map": "/monitor-tuto/static/js/2.81c0a09f.chunk.js.map",
+    "static/js/3.1af73d3e.chunk.js": "/monitor-tuto/static/js/3.1af73d3e.chunk.js",
+    "static/js/3.1af73d3e.chunk.js.map": "/monitor-tuto/static/js/3.1af73d3e.chunk.js.map",
+    "index.html": "/monitor-tuto/index.html",
+    "static/css/main.8c8b27cf.chunk.css.map": "/monitor-tuto/static/css/main.8c8b27cf.chunk.css.map",
+    "static/js/2.81c0a09f.chunk.js.LICENSE.txt": "/monitor-tuto/static/js/2.81c0a09f.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/monitor-tuto/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.969b88d0.js",
+    "static/js/2.81c0a09f.chunk.js",
+    "static/css/main.8c8b27cf.chunk.css",
+    "static/js/main.c0657252.chunk.js"
+  ]
+}
