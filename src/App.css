@@ -10,10 +10,9 @@
 button {
   margin: 2rem;
 }
+
 .video {
   height: 500px;
   width: auto;
-  background: transparent;
-  /* position: absolute; */
-  /* opacity: 0.3; */
+  background: white;
 }
