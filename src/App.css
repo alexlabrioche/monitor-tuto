@@ -1,18 +1,55 @@
 .app {
-  text-align: center;
   min-height: 100vh;
+}
+
+.button {
+  margin: 0.2rem;
+  width: 100%;
+  border: none;
+  background-color: rgba(244, 218, 133, 1);
+  border-radius: 0.5rem;
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+}
+
+.tuto-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-button {
-  margin: 2rem;
+  max-height: 812px;
+  min-height: 568px;
+  max-width: 411px;
+  margin: auto;
 }
 
 .video {
-  height: 500px;
-  width: auto;
+  height: auto;
+  width: 100%;
   background: white;
+}
+.btn-container {
+  display: flex;
+}
+
+.videotuto {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: auto;
+  max-width: 411px;
+}
+
+.video-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(transparent, white, white, white);
+  height: 66%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
 }

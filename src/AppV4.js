@@ -1,6 +1,45 @@
-import { useRef, useEffect, useState, useCallback } from "react";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 
 import "./App.css";
+
+const FPS = 30;
+
+function useInterval(callback, delay) {
+  const savedCallback = useRef(callback);
+
+  // Remember the latest callback if it changes.
+  useEffect(() => {
+    savedCallback.current = callback;
+  }, [callback]);
+
+  // Set up the interval.
+  useEffect(() => {
+    // Don't schedule if no delay is specified.
+    if (delay === null) {
+      return;
+    }
+
+    const id = setInterval(() => savedCallback.current(), delay);
+
+    return () => clearInterval(id);
+  }, [delay]);
+}
+
+function useTimeout(callback, delay) {
+  const timeoutRef = React.useRef(null);
+  const savedCallback = React.useRef(callback);
+  React.useEffect(() => {
+    savedCallback.current = callback;
+  }, [callback]);
+  React.useEffect(() => {
+    const tick = () => savedCallback.current();
+    if (typeof delay === "number") {
+      timeoutRef.current = window.setTimeout(tick, delay);
+      return () => window.clearTimeout(timeoutRef.current);
+    }
+  }, [delay]);
+  return timeoutRef;
+}
 
 const VIDEOS = {
   1: { name: "onboarding_01_loop", loop: true },
@@ -46,6 +85,8 @@ const contents = {
 };
 
 function App() {
+  const [frame, setFrame] = useState(1);
+
   const [video, setVideo] = useState(VIDEOS[1]);
   const [step, setStep] = useState(1);
   console.log({ step });
@@ -71,6 +112,14 @@ function App() {
     });
   }, [step]);
 
+  // const updateFrame = () => (frame.current = frame + 1);
+
+  useInterval(() => {
+    setFrame((s) => s + 1);
+  }, 1000 / FPS);
+
+  // console.log({ test });
+
   const prev = useCallback(() => {
     setCanTriggerPrevStep(false);
     setCanTriggerNextStep(false);
@@ -88,12 +137,12 @@ function App() {
     });
   }, [step]);
 
-  useEffect(() => {
-    if (!video.loop) {
-      console.log("trigger next video not loop: ", video);
-      next();
-    }
-  }, [video, next]);
+  // useEffect(() => {
+  //   if (!video.loop) {
+  //     console.log("trigger next video not loop: ", video);
+  //     next();
+  //   }
+  // }, [video, next]);
 
   useEffect(() => {
     if (videoPlayerRef.current) {
@@ -103,27 +152,57 @@ function App() {
 
   return (
     <div className="app">
-      <video
-        autoPlay
-        // autobuffer="autobuffer"
-        // preload="preload"
-        // playsInline
-        className="video"
-        loop={video.loop}
-        ref={videoPlayerRef}
-        src={`${process.env.PUBLIC_URL}/videos/${video.name}.mp4`}
-        type="video/mp4"
-      />
-      <div>
-        <button disabled={!canTriggerPrevStep} onClick={prev}>
-          Précédent
-        </button>
-        <button disabled={!canTriggerNextStep} onClick={next}>
-          Suivant
-        </button>
+      <Scroll frame={frame} fps={FPS}>
+        <video
+          tabIndex="0"
+          autobuffer="autobuffer"
+          preload="preload"
+          style={{ width: "100%", objectFit: "contain" }}
+          playsInline
+        >
+          <source
+            type="video/mp4"
+            src={`${process.env.PUBLIC_URL}/videos/full_onboarding.mp4`}
+          />
+        </video>
+      </Scroll>
+    </div>
+  );
+}
+
+function Scroll({ children, frame, fps, ...rest }) {
+  const videoRef = React.createRef();
+  const divWrapperRef = React.createRef();
+
+  const [isReady, setIsReady] = useState(false);
+
+  const attachRefToVideo = () => {
+    return React.cloneElement(children, { ref: videoRef });
+  };
+
+  useEffect(() => {
+    const _ref = videoRef.current;
+    _ref.addEventListener("loadedmetadata", () => {
+      setIsReady(true);
+    });
+    if (isReady) {
+      const currentFrame = frame / fps;
+      _ref.currentTime = currentFrame;
+    }
+    return () => {
+      _ref.removeEventListener("loadedmetadata", () => {
+        console.log(_ref);
+      });
+    };
+  }, [videoRef, frame, isReady, fps]);
+
+  return (
+    <div ref={divWrapperRef} {...rest}>
+      <div style={{ position: "fixed" }}>{attachRefToVideo()}</div>
+
+      <div style={{ position: "fixed", zIndex: 10, color: "black" }}>
+        {frame}
       </div>
-      {/* <h3>{contents[step].title}</h3>
-      <p>{contents[step].desc}</p> */}
     </div>
   );
 }
