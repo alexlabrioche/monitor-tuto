@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/monitor-tuto/static/css/main.c10860c3.chunk.css",
-    "main.js": "/monitor-tuto/static/js/main.5712ba29.chunk.js",
-    "main.js.map": "/monitor-tuto/static/js/main.5712ba29.chunk.js.map",
+    "main.css": "/monitor-tuto/static/css/main.d0780e20.chunk.css",
+    "main.js": "/monitor-tuto/static/js/main.24a06224.chunk.js",
+    "main.js.map": "/monitor-tuto/static/js/main.24a06224.chunk.js.map",
     "runtime-main.js": "/monitor-tuto/static/js/runtime-main.8588f970.js",
     "runtime-main.js.map": "/monitor-tuto/static/js/runtime-main.8588f970.js.map",
     "static/js/2.77ec11ef.chunk.js": "/monitor-tuto/static/js/2.77ec11ef.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.e84f64fe.chunk.js": "/monitor-tuto/static/js/3.e84f64fe.chunk.js",
     "static/js/3.e84f64fe.chunk.js.map": "/monitor-tuto/static/js/3.e84f64fe.chunk.js.map",
     "index.html": "/monitor-tuto/index.html",
-    "static/css/main.c10860c3.chunk.css.map": "/monitor-tuto/static/css/main.c10860c3.chunk.css.map",
+    "static/css/main.d0780e20.chunk.css.map": "/monitor-tuto/static/css/main.d0780e20.chunk.css.map",
     "static/js/2.77ec11ef.chunk.js.LICENSE.txt": "/monitor-tuto/static/js/2.77ec11ef.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.8588f970.js",
     "static/js/2.77ec11ef.chunk.js",
-    "static/css/main.c10860c3.chunk.css",
-    "static/js/main.5712ba29.chunk.js"
+    "static/css/main.d0780e20.chunk.css",
+    "static/js/main.24a06224.chunk.js"
   ]
 }
