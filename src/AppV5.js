@@ -1,14 +1,7 @@
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useRef, useState, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import "./App.css";
-
-const VIDEOS = {
-  1: { name: "onboarding_01_loop", loop: true },
-  2: { name: "onboarding_02_thru", loop: false },
-  3: { name: "onboarding_02_loop", loop: true },
-  4: { name: "onboarding_03_thru", loop: false },
-  5: { name: "onboarding_03_loop", loop: true },
-};
 
 const contents = {
   1: {
@@ -37,11 +30,22 @@ const contents = {
   },
 };
 
+const variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
+
+const titleVariants = {
+  hidden: { opacity: 0, y: -10 },
+  visible: { opacity: 1, y: 0 },
+};
+
 function App() {
   const [step, setStep] = useState(1);
   const [canTriggerNextStep, setCanTriggerNextStep] = useState(true);
   const [canTriggerPrevStep, setCanTriggerPrevStep] = useState(false);
   const videoPlayerRef = useRef();
+  console.log({ canTriggerPrevStep, canTriggerNextStep });
 
   const next = useCallback(() => {
     setCanTriggerPrevStep(false);
@@ -76,18 +80,41 @@ function App() {
   return (
     <div className="app">
       <div className="tuto-container">
+        {/* <AnimatePresence key={step} exitBeforeEnter> */}
         <video
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={variants}
+          transition={{ duration: 2 }}
           autoPlay
           autobuffer="autobuffer"
           preload="preload"
           className="videotuto"
           ref={videoPlayerRef}
-          src={`${process.env.PUBLIC_URL}/videos/home_0${step}.mp4`}
+          src={`${process.env.PUBLIC_URL}/videos/Onboarding_Ecran_0${step}.mp4`}
           type="video/mp4"
         />
+        {/* </AnimatePresence> */}
         <div className="video-overlay">
-          <h3>{contents[step].title}</h3>
-          <p>{contents[step].desc}</p>
+          <h3
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={titleVariants}
+            transition={{ duration: 0.5 }}
+          >
+            {contents[step].title}
+          </h3>
+          <p
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={titleVariants}
+            transition={{ duration: 0.5 }}
+          >
+            {contents[step].desc}
+          </p>
           <div className="btn-container">
             <button
               className="button"
