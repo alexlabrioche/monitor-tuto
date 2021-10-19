@@ -41,6 +41,7 @@ const titleVariants = {
 };
 
 function App() {
+  const [videoURL, setVideoURL] = useState("Onboarding_Ecran_0");
   const [step, setStep] = useState(1);
   const [canTriggerNextStep, setCanTriggerNextStep] = useState(true);
   const [canTriggerPrevStep, setCanTriggerPrevStep] = useState(false);
@@ -77,6 +78,12 @@ function App() {
     });
   }, [step]);
 
+  const toggleVideoURL = () => {
+    setVideoURL((s) =>
+      s === "Onboarding_Ecran_0" ? "home_0" : "Onboarding_Ecran_0"
+    );
+  };
+
   return (
     <div className="app">
       <div className="tuto-container">
@@ -90,9 +97,9 @@ function App() {
           autoPlay
           autobuffer="autobuffer"
           preload="preload"
-          className="videotuto"
+          className={videoURL === "home_0" ? "videotuto" : "videotuto2"}
           ref={videoPlayerRef}
-          src={`${process.env.PUBLIC_URL}/videos/Onboarding_Ecran_0${step}.mp4`}
+          src={`${process.env.PUBLIC_URL}/videos/${videoURL}${step}.mp4`}
           type="video/mp4"
         />
         {/* </AnimatePresence> */}
@@ -115,6 +122,7 @@ function App() {
           >
             {contents[step].desc}
           </p>
+          <div style={{ flex: 1 }} />
           <div className="btn-container">
             <button
               className="button"
@@ -133,6 +141,12 @@ function App() {
           </div>
         </div>
       </div>
+      <button
+        style={{ position: "absolute", top: 20, left: 20 }}
+        onClick={toggleVideoURL}
+      >
+        changer le mode de tuto
+      </button>
     </div>
   );
 }
